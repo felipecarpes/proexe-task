@@ -1,11 +1,15 @@
-// import Header from '../components/Header';
-// // import UsersContainer from '../components/UsersContainer';
+import Header from '../components/Header';
+import UsersContainer from '../components/UsersContainer';
 
-// const Dashboard = () => {
-//     return (
-//         <Header/>,
-//         <UsersContainer/>
-//     );
-// }
+import '../styles/global.scss';
 
-// export default Dashboard;
+const Dashboard = () => {
+    return (
+        <>
+            <Header/>
+            <UsersContainer/>
+        </>
+    );
+}
+
+export default Dashboard;
