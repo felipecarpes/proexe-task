@@ -1,28 +1,31 @@
-import { ActionTypes } from "./types";
+import ActionTypes from "./types";
 
-export function addProductToCartRequest(product) {
+export function addNewUserRequest(userTable, newUser) {
     return {
-        type: ActionTypes.addProductToCartRequest,
+        type: ActionTypes.addNewUserRequest,
         payload: {
-            product
+            userTable,
+            newUser
         }
     }
 }
 
-export function addProductToCartSuccess(product) {
+export function removeUserRequest(userTable, userId) {
     return {
-        type: ActionTypes.addProductToCartSuccess,
+        type: ActionTypes.removeUserRequest,
         payload: {
-            product
+            userTable,
+            userId
         }
     }
 }
 
-export function addProductToCartFailure(productId) {
+export function editUserRequest(userTable, userInfo) {
     return {
-        type: ActionTypes.addProductToCartFailure,
+        type: ActionTypes.editUserRequest,
         payload: {
-            productId
+            userTable,
+            userInfo
         }
     }
 }
