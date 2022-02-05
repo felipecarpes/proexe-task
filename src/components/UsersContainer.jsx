@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useDispatch, connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addNewUserRequest, removeUserRequest, editUserRequest } from '../store/modules/user/actions';
 
 import DeleteModal from './DeleteModal';
