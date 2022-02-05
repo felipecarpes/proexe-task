@@ -8,7 +8,7 @@ const initialState = {
 
 const user = (state = initialState, action) => {
     return produce(state, draft => {
-        console.log(state, draft)
+        // console.log(state, draft)
         // switch (action.type) {
         //     case ActionTypes.addProductToCartSuccess: {
         //         const { product } = action.payload;
