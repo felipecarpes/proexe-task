@@ -1,41 +1,44 @@
-import produce from 'immer';
+import ActionTypes from './types'
 
-// import { ActionTypes } from './types;'
+const user = (state = [], action) => {
+    switch (action.type) {
+        case ActionTypes.addNewUserRequest: {
+            const { userTable, newUser } = action.payload;
+            return userTable.push({
+                id: userTable.length + 1,
+                name: newUser.name,
+                username: newUser.name.substr(0,6),
+                email: newUser.email,
+                address: {
+                    city: '-'
+                }
+            })
+        }
+        case ActionTypes.removeUserRequest: {
+                const { userTable, userId } = action.payload;
+                const findUser = userTable.findIndex(item => item.id === userId)
 
-const initialState = {
-    newValue: ''
-};
+                if(findUser >= 0) {
+                    userTable.splice(findUser, 1)
+                    return userTable
+                }
+            break;
+        }
+        case ActionTypes.editUserRequest: {
+                const { userTable, userInfo } = action.payload;
+                const findUser = userTable.findIndex(item => item.id === userInfo.id)
 
-const user = (state = initialState, action) => {
-    return produce(state, draft => {
-        // console.log(state, draft)
-        // switch (action.type) {
-        //     case ActionTypes.addProductToCartSuccess: {
-        //         const { product } = action.payload;
-
-        //         const productInCartIndex = draft.items.findIndex(item => item.product.id === product.id);
-
-        //         if(productInCartIndex >= 0) {
-        //             draft.items[productInCartIndex].quantity++;
-        //         } else {
-        //             draft.items.push({
-        //                 product,
-        //                 quantity: 1
-        //             })
-        //         }
-
-        //         break;
-        //     }
-        //     case ActionTypes.addProductToCartFailure: {
-        //         draft.failedStockCheck.push(action.payload.productId)
-
-        //         break;
-        //     }
-        //     default: {
-        //         return draft;
-        //     }
-        // }
-    })
+                if(findUser >= 0) {
+                    userTable[findUser]['name'] = userInfo.name
+                    userTable[findUser]['email'] = userInfo.email
+                    return userTable
+                }
+            break;
+        }
+        default: {
+            return state;
+        }
+    }
 }
 
 export default user;
