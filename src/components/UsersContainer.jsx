@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { addNewUserRequest, removeUserRequest, editUserRequest } from '../store/modules/user/actions';
+import { addNewUserRequest, editUserRequest } from '../store/modules/user/actions';
 
 import DeleteModal from './DeleteModal';
 
@@ -28,6 +28,7 @@ const UsersContainer = () => {
     }, [])
 
     const handleOpenModal = (id) => {
+        console.log(id)
         setUserId(id)
         document.getElementsByClassName('modal')[0].style.display = 'flex'
     }
@@ -36,10 +37,6 @@ const UsersContainer = () => {
         dispatch(addNewUserRequest(users, user))
         setTimeout(() => setAddUser(false), 1000)
     }, [dispatch, users, user])
-
-    const handleRemoveUser = () => {
-        dispatch(removeUserRequest(users, userId))
-    }
 
     const handleEditUser = useCallback(() => {
         dispatch(editUserRequest(users, user))
@@ -175,7 +172,7 @@ const UsersContainer = () => {
                     </section>
                     ) 
                 }
-            <DeleteModal deleteUser={() => handleRemoveUser()}/>
+            <DeleteModal users={users} userId={userId}/>
         </>
     )
 }

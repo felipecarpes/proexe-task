@@ -1,16 +1,20 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { removeUserRequest } from '../store/modules/user/actions';
 
 import '../styles/modal.scss';
 
-const DeleteModal = (props) => {
+const DeleteModal = ({ users, userId }) => {
+
+    const dispatch = useDispatch()
 
     const handleCloseModal = () => {
         document.getElementsByClassName('modal')[0].style.display = 'none'
     }
 
-    const handleDelete = () => {
-        document.getElementsByClassName('modal')[0].style.display = 'none'
-        return props.deleteUser
+    const handleRemoveUser = () => {
+        dispatch(removeUserRequest(users, userId))
+        setTimeout(() => document.getElementsByClassName('modal')[0].style.display = 'none', 1000)
     }
     return (
         <div className="modal">
@@ -23,7 +27,7 @@ const DeleteModal = (props) => {
                     <button type="submit" className="cancel-button" onClick={() => handleCloseModal()}>
                         Cancel
                     </button>
-                    <button className="delete-button" onClick={handleDelete}>
+                    <button className="delete-button" onClick={() => handleRemoveUser()}>
                         Delete
                     </button>
                 </div>
