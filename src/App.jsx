@@ -1,18 +1,16 @@
 import { Provider } from 'react-redux';
+import RoutesApp from './routes';
+import { BrowserRouter as Router } from 'react-router-dom';
 import store from './store';
 
-import Dashboard from './pages/Dashboard';
-import Header from './components/Header';
-import UsersContainer from './components/UsersContainer';
-
-import './styles/global.scss'
+import './styles/global.scss';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <Header/>,
-      <UsersContainer/>
-      {/* <Dashboard/> */}
+      <Router>
+        <RoutesApp />
+      </Router>
     </Provider>
   );
 }
