@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import '../styles/users.scss'
 
@@ -34,9 +34,10 @@ const UsersContainer = () => {
 
                 <div className="input-group">
                     {/* <input type="text" placeholder="Adicionar novo todo"/> */}
-                    <button type="submit" data-testid="add-task-button" >
+                    
+                    <Link to="/add-user" className="add-new-button">
                         Add new
-                    </button>
+                    </Link>
                 </div>
             </header>
 
@@ -79,13 +80,13 @@ const UsersContainer = () => {
                                     <td>{item.address.city}</td>
                                     <td align="center" className="button-column">
                                         <button type="submit" style={{backgroundColor: "orange"}}>
-                                            Edit
+                                            edit
                                         </button>
                                         
                                     </td>
                                     <td align="center" className="button-column">
                                         <button type="submit" style={{backgroundColor: "red"}}>
-                                        Delete
+                                            delete
                                         </button>
                                     </td>
                                 </tr>
